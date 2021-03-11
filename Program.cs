@@ -8,6 +8,13 @@ namespace Classes
         {
             BankAccount account = new BankAccount("Etienne", 1000);
             Console.WriteLine($"Account {account.Number} was created for {account.Owner} with {account.Balance} as the initial balance.");
+
+            account.MakeWithdrawal(500, DateTime.Now, "Rent payment");
+            Console.WriteLine(account.Balance);
+
+            account.MakeDeposite(100, DateTime.Now, "Friend paid me back");
+            Console.WriteLine(account.Balance);
+
         }
     }
 }
