@@ -15,6 +15,8 @@ namespace Classes
             account.MakeDeposite(100, DateTime.Now, "Friend paid me back");
             Console.WriteLine(account.Balance);
 
+            Console.WriteLine(account.GetAccountHistory());
+
             // Inline Testing
             // Test that the initial balance must be positive.
             try

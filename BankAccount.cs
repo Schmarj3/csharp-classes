@@ -44,7 +44,6 @@ namespace Classes
 
             var deposit = new Transaction(amount, date, note);
             allTransactions.Add(deposit);
-            Console.WriteLine($"DEPOSIT: {deposit.Amount}, {deposit.Date}, {deposit.Notes}");
         }
 
         public void MakeWithdrawal(decimal amount, DateTime date, string note)
@@ -60,7 +59,21 @@ namespace Classes
 
             var withdrawal = new Transaction(-amount, date, note);
             allTransactions.Add(withdrawal);
-            Console.WriteLine($"WITHDRAWAL: {withdrawal.Amount}, {withdrawal.Date}, {withdrawal.Notes}");
+        }
+
+        // Log all transactions
+        public string GetAccountHistory()
+        {
+            var report = new System.Text.StringBuilder();
+
+            decimal balance = 0;
+            report.AppendLine("Date\t\tAmount\tBalance\tNote");
+            foreach (var item in allTransactions)
+            {
+                balance += item.Amount;
+                report.AppendLine($"{item.Date.ToShortDateString()}\t{item.Amount}\t{item.Notes}");
+            }
+            return report.ToString();
         }
     }
 }
