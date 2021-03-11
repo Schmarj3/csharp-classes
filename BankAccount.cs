@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Classes
 {
@@ -8,7 +9,19 @@ namespace Classes
 
         public string Number { get; }
         public string Owner { get; set; }
-        public decimal Balance { get; }
+        public decimal Balance 
+        {
+            get
+            {
+                decimal balance = 0;
+                foreach (var item in allTransactions)
+                {
+                    balance += item.Amount;
+                }
+
+                return balance;
+            }
+        }
 
         public BankAccount(string name, decimal initialBalance)
         {
@@ -17,6 +30,8 @@ namespace Classes
             this.Number = accountNumberSeed.ToString();
             accountNumberSeed++;
         }
+
+        private List<Transaction> allTransactions = new List<Transaction>();
 
         public void MakeDepositee(decimal amount, DateTime date, string note)
         {
