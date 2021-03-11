@@ -44,6 +44,7 @@ namespace Classes
 
             var deposit = new Transaction(amount, date, note);
             allTransactions.Add(deposit);
+            Console.WriteLine($"DEPOSIT: {deposit.Amount}, {deposit.Date}, {deposit.Notes}");
         }
 
         public void MakeWithdrawal(decimal amount, DateTime date, string note)
@@ -59,6 +60,7 @@ namespace Classes
 
             var withdrawal = new Transaction(-amount, date, note);
             allTransactions.Add(withdrawal);
+            Console.WriteLine($"WITHDRAWAL: {withdrawal.Amount}, {withdrawal.Date}, {withdrawal.Notes}");
         }
     }
 }
